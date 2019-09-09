@@ -1,8 +1,11 @@
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
-#include "viperfish.hpp"
+#include <viperfish.hpp>
+#include <string>
+#include <vector>
+#include <map>
 
-#ifdef WIN32
+#ifdef _WIN32
 #ifndef _DEBUG
 #pragma comment(lib, "glfw3.lib")
 #else
