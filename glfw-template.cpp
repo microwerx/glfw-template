@@ -17,7 +17,7 @@
 namespace glfwt
 {
 	std::string windowTitle = "GLFW Template";
-	int displayMode = GLUT_DOUBLE | GLUT_STENCIL | GLUT_RGBA | GLUT_DEPTH;
+	int displayMode = 0;//GLUT_DOUBLE | GLUT_STENCIL | GLUT_RGBA | GLUT_DEPTH;
 	int screenWidth = 1280;
 	int screenHeight = 720;
 	double Fps = 0;
@@ -274,4 +274,12 @@ void GlfwTemplateMainLoop()
 
 	// Uninitialize GLFW
 	glfwTerminate();
+}
+
+int main(int argc, char **argv)
+{
+	GlfwTemplateSetParameters("GLFW Template", 1280, 720, 0);
+	GlfwTemplateInit(argc, argv);
+	GlfwTemplateMainLoop();
+	return 0;
 }

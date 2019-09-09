@@ -1,6 +1,13 @@
+INCLUDE_LIBRARIES = glfw gl
+INCLUDE_PROJECTS = hatchetfish fluxions-deps fluxions-gte viperfish
+INCLUDEDIRS = $(patsubst %,-I../%/include,$(INCLUDE_PROJECTS))
+LIBDIRS = $(patsubst %,-L../%/,$(INCLUDE_PROJECTS))
+LIBS = $(patsubst %,-l%,$(INCLUDE_PROJECTS)) $(patsubst %,-l%,$(INCLUDE_LIBRARIES))
+
 CXX = g++
-CXXFLAGS = -std=c++14 -g -Wall -I../fluxions-gte/include
-LDFLAGS = -lglfw -L../fluxions-gte/ -lfluxions-gte
+AR = ar rcs
+CXXFLAGS = -std=c++14 -g -Wall -Iinclude $(INCLUDEDIRS)
+LDFLAGS = $(LIBDIRS) $(LIBS)
 
 # We use this to 
 SOURCES = $(wildcard *.cpp)
