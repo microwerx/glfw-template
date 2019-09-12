@@ -1,16 +1,15 @@
-#include <GL/glew.h>
+#include <fluxions_opengl.hpp>
 #include <GLFW/glfw3.h>
 #include <viperfish.hpp>
 #include <string>
 #include <vector>
 #include <map>
-//#include <fluxions.hpp>
+#include <fluxions.hpp>
 #include "GraphicsTestApp.hpp"
 
 #ifdef _WIN32
 #ifdef _DEBUG
 #pragma comment(lib, "glfw3d.lib")
-#pragma comment(lib, "opengl32.lib")
 #pragma comment(lib, "hatchetfish.lib")
 #pragma comment(lib, "viperfish.lib")
 #pragma comment(lib, "fluxions-gte.lib")
@@ -19,12 +18,11 @@
 #pragma comment(lib, "glfw3.lib")
 #pragma comment(lib, "hatchetfish.lib")
 #pragma comment(lib, "viperfish.lib")
-#pragma comment(lib, "opengl32.lib")
-#pragma comment(lib, "glu32.lib")
 #pragma comment(lib, "fluxions-gte.lib")
 #pragma comment(lib, "fluxions-deps.lib")
-#endif // NDEBUG
-#endif // WIN32
+#pragma comment(lib, "fluxions.lib")
+#endif // _DEBUG
+#endif // _WIN32
 
 //////////////////////////////////////////////////////////////////////
 // G L O B A L   V A R I A B L E S ///////////////////////////////////
