@@ -4,12 +4,25 @@
 #include <string>
 #include <vector>
 #include <map>
+//#include <fluxions.hpp>
+#include "GraphicsTestApp.hpp"
 
 #ifdef _WIN32
-#ifndef _DEBUG
-#pragma comment(lib, "glfw3.lib")
-#else
+#ifdef _DEBUG
 #pragma comment(lib, "glfw3d.lib")
+#pragma comment(lib, "opengl32.lib")
+#pragma comment(lib, "hatchetfish.lib")
+#pragma comment(lib, "viperfish.lib")
+#pragma comment(lib, "fluxions-gte.lib")
+#pragma comment(lib, "fluxions-deps.lib")
+#else
+#pragma comment(lib, "glfw3.lib")
+#pragma comment(lib, "hatchetfish.lib")
+#pragma comment(lib, "viperfish.lib")
+#pragma comment(lib, "opengl32.lib")
+#pragma comment(lib, "glu32.lib")
+#pragma comment(lib, "fluxions-gte.lib")
+#pragma comment(lib, "fluxions-deps.lib")
 #endif // NDEBUG
 #endif // WIN32
 
@@ -54,7 +67,7 @@ namespace glfwt
 	std::map<int, int> keyMap;
 	int specialKeyMap[256] = { 0 };
 	std::vector<std::string> args;
-	Viperfish::Widget::SharedPtr vfWidget = nullptr;
+	Vf::Widget::SharedPtr vfWidget = nullptr;
 	bool exitMainloop = false;
 
 	GLFWwindow* window = nullptr;
@@ -99,7 +112,7 @@ namespace glfwt
 	void key_callback(GLFWwindow* window, int key, int scancode, int action, int mods)
 	{
 		keyMap[key] = action;
-		Viperfish::SetKeyboardModifiers(
+		Vf::SetKeyboardModifiers(
 			mods & GLFW_MOD_SHIFT,
 			mods & GLFW_MOD_CONTROL,
 			mods & GLFW_MOD_ALT,
@@ -107,8 +120,8 @@ namespace glfwt
 			mods & GLFW_MOD_CAPS_LOCK,
 			mods & GLFW_MOD_NUM_LOCK);
 		key = glfwKeyToVf(key);
-		int keymod = Viperfish::GetKeyboardModifiers();
-		std::string keyName = key < 0x100 ? Viperfish::KeyToHTML5Name(key) : Viperfish::SpecialKeyToHTML5Name(key);
+		int keymod = Vf::GetKeyboardModifiers();
+		std::string keyName = key < 0x100 ? Vf::KeyToHTML5Name(key) : Vf::SpecialKeyToHTML5Name(key);
 		
 		if (vfWidget) {
 			if (action == GLFW_PRESS)
@@ -233,7 +246,7 @@ bool GlfwTemplateInit(int argc, char **argv)
 	return true;
 }
 
-void GlfwTemplateWidget(Viperfish::Widget::SharedPtr widget)
+void GlfwTemplateWidget(Vf::Widget::SharedPtr widget)
 {
 	glfwt::vfWidget = widget;
 }
@@ -281,8 +294,12 @@ void GlfwTemplateMainLoop()
 
 int main(int argc, char **argv)
 {
+	Vf::Widget::SharedPtr widget = std::make_shared<GraphicsTestApp>();
+
 	GlfwTemplateSetParameters("GLFW Template", 1280, 720, 0);
 	GlfwTemplateInit(argc, argv);
+	//Fluxions::Init();
+	GlfwTemplateWidget(widget);
 	GlfwTemplateMainLoop();
 	return 0;
 }

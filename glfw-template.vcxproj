@@ -70,11 +70,11 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <IncludePath>$(ProjectDir)..\fluxions-deps\include;$(ProjectDir)..\fluxions-gte\include;$(ProjectDir)..\hatchetfish\include;$(ProjectDir)..\viperfish\include;$(ProjectDir)..\libs\include\;$(VC_IncludePath);$(WindowsSDK_IncludePath)</IncludePath>
-    <LibraryPath>$(ProjectDir)..\libs\x64\;$(VC_LibraryPath_x64);$(WindowsSDK_LibraryPath_x64);$(NETFXKitsDir)Lib\um\x64</LibraryPath>
+    <LibraryPath>$(SolutionDir)..\ssphh-all\$(Platform)\$(Configuration)\;$(SolutionDir)$(Platform)\$(Configuration)\;$(ProjectDir)..\libs\lib\x64\;$(VC_LibraryPath_x64);$(WindowsSDK_LibraryPath_x64);$(NETFXKitsDir)Lib\um\x64</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <IncludePath>$(ProjectDir)..\fluxions-deps\include;$(ProjectDir)..\fluxions-gte\include;$(ProjectDir)..\hatchetfish\include;$(ProjectDir)..\viperfish\include;$(ProjectDir)..\libs\include\;$(VC_IncludePath);$(WindowsSDK_IncludePath)</IncludePath>
-    <LibraryPath>$(ProjectDir)..\libs\x64\;$(VC_LibraryPath_x64);$(WindowsSDK_LibraryPath_x64);$(NETFXKitsDir)Lib\um\x64</LibraryPath>
+    <LibraryPath>$(SolutionDir)..\ssphh-all\$(Platform)\$(Configuration)\;$(SolutionDir)$(Platform)\$(Configuration)\;$(ProjectDir)..\libs\lib\x64\;$(VC_LibraryPath_x64);$(WindowsSDK_LibraryPath_x64);$(NETFXKitsDir)Lib\um\x64</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -107,6 +107,10 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="glfw-template.cpp" />
+    <ClCompile Include="GraphicsTestApp.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="GraphicsTestApp.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
