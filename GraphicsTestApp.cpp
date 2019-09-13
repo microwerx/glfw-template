@@ -1,4 +1,4 @@
-#include <GL/glew.h>
+#include <fluxions_opengl.hpp>
 #include <GLFW/glfw3.h>
 #include <viperfish_dear_imgui.hpp>
 #include "GraphicsTestApp.hpp"

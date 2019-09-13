@@ -2,8 +2,8 @@
 #include <vector>
 #include <map>
 
-#include <GLFW/glfw3.h>
 #include <fluxions_opengl.hpp>
+#include <GLFW/glfw3.h>
 #include <fluxions.hpp>
 #include <viperfish.hpp>
 
