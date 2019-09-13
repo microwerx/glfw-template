@@ -16,6 +16,7 @@
 #pragma comment(lib, "viperfish.lib")
 #pragma comment(lib, "fluxions-gte.lib")
 #pragma comment(lib, "fluxions-deps.lib")
+#pragma comment(lib, "fluxions.lib")
 #else
 #pragma comment(lib, "glfw3.lib")
 #pragma comment(lib, "hatchetfish.lib")
@@ -292,14 +293,19 @@ void GlfwTemplateMainLoop()
 	glfwTerminate();
 }
 
+//#ifdef main
+//#undef main
+//#endif
+
 int main(int argc, char **argv)
 {
 	Vf::Widget::SharedPtr widget = std::make_shared<GraphicsTestApp>();
 
 	GlfwTemplateSetParameters("GLFW Template", 1280, 720, 0);
 	GlfwTemplateInit(argc, argv);
-	//Fluxions::Init();
+	Fluxions::Init();
 	GlfwTemplateWidget(widget);
 	GlfwTemplateMainLoop();
+	Fluxions::Kill();
 	return 0;
 }

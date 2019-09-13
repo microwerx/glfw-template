@@ -1,10 +1,10 @@
 #ifndef GRAPHICS_TEST_APP_HPP
 #define GRAPHICS_TEST_APP_HPP
 
-#include <viperfish_widget.hpp>
+#include <viperfish_dear_imgui.hpp>
 
 class GraphicsTestApp :
-	public Vf::Widget
+	public Vf::DearImGuiWidget
 {
 public:
 	GraphicsTestApp();
@@ -22,6 +22,9 @@ public:
 	void OnRender2D() override;
 	void OnRenderDearImGui() override;
 	void OnPostRender() override;
+private:
+	float windowSize = 512.0f;
+	ImVec2 windowPosition = ImVec2(32.0f, 32.0f);
 };
 
 #endif
