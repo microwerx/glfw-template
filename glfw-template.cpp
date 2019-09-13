@@ -1,10 +1,12 @@
-#include <fluxions_opengl.hpp>
-#include <GLFW/glfw3.h>
-#include <viperfish.hpp>
 #include <string>
 #include <vector>
 #include <map>
+
+#include <GLFW/glfw3.h>
+#include <fluxions_opengl.hpp>
 #include <fluxions.hpp>
+#include <viperfish.hpp>
+
 #include "GraphicsTestApp.hpp"
 
 #ifdef _WIN32
