@@ -11,18 +11,10 @@
 
 #ifdef _WIN32
 #ifdef _DEBUG
-#pragma comment(lib, "glfw3d.lib")
-#pragma comment(lib, "hatchetfish.lib")
-#pragma comment(lib, "viperfish.lib")
-#pragma comment(lib, "fluxions-gte.lib")
-#pragma comment(lib, "fluxions-deps.lib")
+#pragma comment(lib, "glfw3dll.lib")
 #pragma comment(lib, "fluxions.lib")
 #else
-#pragma comment(lib, "glfw3.lib")
-#pragma comment(lib, "hatchetfish.lib")
-#pragma comment(lib, "viperfish.lib")
-#pragma comment(lib, "fluxions-gte.lib")
-#pragma comment(lib, "fluxions-deps.lib")
+#pragma comment(lib, "glfw3dll.lib")
 #pragma comment(lib, "fluxions.lib")
 #endif // _DEBUG
 #endif // _WIN32

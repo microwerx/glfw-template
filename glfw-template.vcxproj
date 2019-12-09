@@ -69,12 +69,12 @@
     <LinkIncremental>true</LinkIncremental>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <IncludePath>$(ProjectDir)..\fluxions\include;$(ProjectDir)..\fluxions-deps\include;$(ProjectDir)..\fluxions-gte\include;$(ProjectDir)..\hatchetfish\include;$(ProjectDir)..\viperfish\include;$(ProjectDir)..\libs\include\;$(VC_IncludePath);$(WindowsSDK_IncludePath)</IncludePath>
-    <LibraryPath>$(SolutionDir)..\ssphh-all\$(Platform)\$(Configuration)\;$(SolutionDir)$(Platform)\$(Configuration)\;$(ProjectDir)..\libs\lib\x64\;$(VC_LibraryPath_x64);$(WindowsSDK_LibraryPath_x64);$(NETFXKitsDir)Lib\um\x64</LibraryPath>
+    <IncludePath>$(ProjectDir)../vcpkg/installed/x64-windows/include;$(IncludePath)</IncludePath>
+    <LibraryPath>$(ProjectDir)../vcpkg/installed/x64-windows/lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <IncludePath>$(ProjectDir)..\fluxions\include;$(ProjectDir)..\fluxions-deps\include;$(ProjectDir)..\fluxions-gte\include;$(ProjectDir)..\hatchetfish\include;$(ProjectDir)..\viperfish\include;$(ProjectDir)..\libs\include\;$(VC_IncludePath);$(WindowsSDK_IncludePath)</IncludePath>
-    <LibraryPath>$(SolutionDir)..\ssphh-all\$(Platform)\$(Configuration)\;$(SolutionDir)$(Platform)\$(Configuration)\;$(ProjectDir)..\libs\lib\x64\;$(VC_LibraryPath_x64);$(WindowsSDK_LibraryPath_x64);$(NETFXKitsDir)Lib\um\x64</LibraryPath>
+    <IncludePath>$(ProjectDir)../vcpkg/installed/x64-windows/include;$(IncludePath)</IncludePath>
+    <LibraryPath>$(ProjectDir)../vcpkg/installed/x64-windows/lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
