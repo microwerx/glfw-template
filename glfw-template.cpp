@@ -2,22 +2,28 @@
 #include <vector>
 #include <map>
 
-#include <fluxions_opengl.hpp>
-#include <GLFW/glfw3.h>
-#include <fluxions.hpp>
+#include <fluxions_base.hpp>
 #include <viperfish.hpp>
+#include <GLFW/glfw3.h>
 
 #include "GraphicsTestApp.hpp"
 
 #ifdef _WIN32
 #ifdef _DEBUG
 #pragma comment(lib, "glfw3dll.lib")
-#pragma comment(lib, "fluxions.lib")
 #else
 #pragma comment(lib, "glfw3dll.lib")
-#pragma comment(lib, "fluxions.lib")
 #endif // _DEBUG
+
+#pragma comment(lib, "opengl32.lib")
+#pragma comment(lib, "glu32.lib")
+#pragma comment(lib, "xinput.lib")
+#pragma comment(lib, "hatchetfish.lib")
+#pragma comment(lib, "fluxions-gte.lib")
+#pragma comment(lib, "fluxions-base.lib")
+#pragma comment(lib, "viperfish.lib")
 #endif // _WIN32
+
 
 //////////////////////////////////////////////////////////////////////
 // G L O B A L   V A R I A B L E S ///////////////////////////////////
@@ -105,7 +111,7 @@ namespace glfwt
 	void key_callback(GLFWwindow* window, int key, int scancode, int action, int mods)
 	{
 		keyMap[key] = action;
-		Vf::SetKeyboardModifiers(
+		Vf::KeyboardState::SetKeyboardModifiers(
 			mods & GLFW_MOD_SHIFT,
 			mods & GLFW_MOD_CONTROL,
 			mods & GLFW_MOD_ALT,
@@ -113,8 +119,8 @@ namespace glfwt
 			mods & GLFW_MOD_CAPS_LOCK,
 			mods & GLFW_MOD_NUM_LOCK);
 		key = glfwKeyToVf(key);
-		int keymod = Vf::GetKeyboardModifiers();
-		std::string keyName = key < 0x100 ? Vf::KeyToHTML5Name(key) : Vf::SpecialKeyToHTML5Name(key);
+		int keymod = Vf::KeyboardState::GetKeyboardModifiers();
+		std::string keyName = key < 0x100 ? Vf::KeyboardState::KeyToHTML5Name(key) : Vf::KeyboardState::SpecialKeyToHTML5Name(key);
 		
 		if (vfWidget) {
 			if (action == GLFW_PRESS)
@@ -194,7 +200,9 @@ namespace glfwt
 		vfWidget->OnPreRender();
 		vfWidget->OnRender3D();
 		vfWidget->OnRender2D();
-		vfWidget->OnRenderDearImGui();
+		//vfWidget->ImGuiNewFrame();
+		//vfWidget->OnRenderDearImGui();
+		//vfWidget->ImGuiEndFrame();
 		vfWidget->OnPostRender();
 	}
 }
@@ -223,9 +231,14 @@ bool GlfwTemplateInit(int argc, char **argv)
 		return false;
 	}
 
+	//glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+
 	// monitor is set to NULL
 	// share is set to NULL
 	glfwt::window = glfwCreateWindow(glfwt::screenWidth, glfwt::screenHeight, glfwt::windowTitle.c_str(), NULL, NULL);
+
+	if (!glfwt::window)
+		return false;
 
 	glfwMakeContextCurrent(glfwt::window);
 
@@ -294,7 +307,10 @@ int main(int argc, char **argv)
 	Vf::Widget::SharedPtr widget = std::make_shared<GraphicsTestApp>();
 
 	GlfwTemplateSetParameters("GLFW Template", 1280, 720, 0);
-	GlfwTemplateInit(argc, argv);
+	if (!GlfwTemplateInit(argc, argv)) {
+		HFLOGERROR("GLFW could not be initialized");
+		return 0;
+	}
 	Fluxions::Init();
 	GlfwTemplateWidget(widget);
 	GlfwTemplateMainLoop();
