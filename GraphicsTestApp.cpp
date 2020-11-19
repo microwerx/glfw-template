@@ -45,20 +45,20 @@ void GraphicsTestApp::OnRender3D() {
 	HFLOGDEBUGFIRSTRUN();
 	Vf::DearImGuiWidget::OnRender3D();
 
-	glMatrixMode(GL_PROJECTION);
-	glLoadIdentity();
-	gluPerspective(45.0f, aspectRatio(), 0.1f, 100.0f);
-	glMatrixMode(GL_MODELVIEW);
-	glLoadIdentity();
-	glTranslatef(0.0f, 0.0f, -10.0f);
-	glBegin(GL_TRIANGLE_STRIP);
-	glColor3f(0.1f, 0.5f, 1.0f);
-	glNormal3f(0.0f, 0.0f, 1.0f);
-	glVertex3f(-1.0f,  1.0f, 0.0f);
-	glVertex3f(-1.0f, -1.0f, 0.0f);
-	glVertex3f( 1.0f,  1.0f, 0.0f);
-	glVertex3f( 1.0f, -1.0f, 0.0f);
-	glEnd();
+	//glMatrixMode(GL_PROJECTION);
+	//glLoadIdentity();
+	//gluPerspective(45.0f, aspectRatio(), 0.1f, 100.0f);
+	//glMatrixMode(GL_MODELVIEW);
+	//glLoadIdentity();
+	//glTranslatef(0.0f, 0.0f, -10.0f);
+	//glBegin(GL_TRIANGLE_STRIP);
+	//glColor3f(0.1f, 0.5f, 1.0f);
+	//glNormal3f(0.0f, 0.0f, 1.0f);
+	//glVertex3f(-1.0f,  1.0f, 0.0f);
+	//glVertex3f(-1.0f, -1.0f, 0.0f);
+	//glVertex3f( 1.0f,  1.0f, 0.0f);
+	//glVertex3f( 1.0f, -1.0f, 0.0f);
+	//glEnd();
 }
 
 void GraphicsTestApp::OnRender2D() {
