@@ -32,9 +32,9 @@
 namespace glfwt
 {
 	std::string windowTitle = "GLFW Template";
-	int displayMode = 0;//GLUT_DOUBLE | GLUT_STENCIL | GLUT_RGBA | GLUT_DEPTH;
-	int screenWidth = 1280;
-	int screenHeight = 720;
+	int displayMode = 0;
+	int screenWidth = 1152;
+	int screenHeight = 480;
 	double Fps = 0;
 	double aspectRatio = (double)glfwt::screenWidth / (double)glfwt::screenHeight;
 	int mouseDX = 0;
@@ -306,7 +306,7 @@ int main(int argc, char **argv)
 {
 	Vf::Widget::SharedPtr widget = std::make_shared<GraphicsTestApp>();
 
-	GlfwTemplateSetParameters("GLFW Template", 1280, 720, 0);
+	GlfwTemplateSetParameters("GLFW Template", 1728, 720, 0);
 	if (!GlfwTemplateInit(argc, argv)) {
 		HFLOGERROR("GLFW could not be initialized");
 		return 0;
